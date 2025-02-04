@@ -38,17 +38,44 @@ public class Main
   {
     for (int i = 0; i < arr.length; i++)
     {
-      if (arr[i] == arr[i])
+      int target = arr[i];
+
+      for (int j = 0; j < arr.length; j++)
       {
-        return true
+        if (arr[j] == target)
+        {
+          return true
+        }
       }
     }
     return false;
   }
 
-  public static String findMode(String[] arr)
+  public static int findMode(int[] arr)
   {
-    // replace with your code
-    return null;
+    int count = 0;
+    int maxcount = 0;
+    int mode = arr[0];
+
+    for (int i = 0; i < arr.length; i++)
+    {
+      int potential_mode = arr[i];
+      count = 0;
+
+      for (int j = 0; j < arr.length; j++)
+      {
+        if (arr[j] == arr[i]) // arr[j] == potential_mode
+        {
+          count++
+        }
+      }
+
+      if (count > maxcount)
+      {
+        maxcount = count;
+        mode = arr[i]; // mode = potential_mode
+      }
+    }
+    return mode;
   }
-}
+}  
